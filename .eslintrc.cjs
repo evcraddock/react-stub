@@ -14,10 +14,12 @@ module.exports = {
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
+    parser: '@typescript-eslint/parser',
     project: [
       'tsconfig.json',
       'tsconfig.node.json',
-    ]
+    ],
+    tsconfigRootDir: __dirname,
   },
   plugins: [
     'react', '@typescript-eslint', 'prettier',

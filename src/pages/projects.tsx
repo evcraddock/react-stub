@@ -18,7 +18,6 @@ const Projects = () => {
               {p.name} - {p.description}
             </li>
           ))}
-        ;
       </ul>
     </>
   );

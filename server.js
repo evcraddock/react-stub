@@ -1,36 +1,38 @@
 import express from 'express';
-import path from 'path';
 import bodyParser from 'body-parser';
-import {fileURLToPath} from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// import path from 'path';
+// import {fileURLToPath} from 'url';
+// 
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 
 const app = express();
 app.use(bodyParser.json());
 
 const port = process.env.PORT || 3000;
 
-app.use(express.static(path.join(__dirname, './dist')));
+// app.use(express.static(path.join(__dirname, './dist')));
+
+// This can be used to host the entire application 
+// app.get('/*', (_, res) => {
+//   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+// });
 
 app.get('/api/health', (_, res) => {
-  res.status(200);
+  res.status(200).json({ message: 'Healthy' });
 });
 
 const projects = [
-  { id: 1, name: 'Project One', description: 'Description for Project One' },
-  { id: 2, name: 'Project Two', description: 'Description for Project Two' },
+  { projectId: 1, projectName: 'Project One', description: 'Description for Project One' },
+  { projectId: 2, projectName: 'Project Two', description: 'Description for Project Two' },
+  { projectId: 3, projectName: 'Project Three', description: 'Description for Project Three' },
 ];
 
 app.get('/api/projects', (_, res) => {
   res.status(200).json(projects);
 });
 
-app.get('/*', (_, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-});
-
 app.listen(port, () => {
-  console.log(`Starting node server on port ${port}`);
+  console.log(`Starting express server on port ${port}`);
 });
 

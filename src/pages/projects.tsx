@@ -5,10 +5,9 @@ import '../App.css';
 const Projects = () => {
   const { data, isLoading, isSuccess } = useGetProjectsQuery();
   const projects = data || [];
-  console.log('testing');
 
   return (
-    <>
+    <div id="content">
       <h1>Projects</h1>
       {isLoading && <span>loading...</span>}
       <ul>
@@ -19,7 +18,7 @@ const Projects = () => {
             </li>
           ))}
       </ul>
-    </>
+    </div>
   );
 };
 

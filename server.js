@@ -23,13 +23,39 @@ app.get('/api/health', (_, res) => {
 });
 
 const projects = [
-  { projectId: 1, projectName: 'Project One', description: 'Description for Project One' },
-  { projectId: 2, projectName: 'Project Two', description: 'Description for Project Two' },
-  { projectId: 3, projectName: 'Project Three', description: 'Description for Project Three' },
+  { projectId: 1, projectName: 'Project 1', description: 'Description for Project 1' },
+  { projectId: 2, projectName: 'Project 2', description: 'Description for Project 2' },
+  { projectId: 3, projectName: 'Project 3', description: 'Description for Project 3' },
 ];
 
 app.get('/api/projects', (_, res) => {
   res.status(200).json(projects);
+});
+
+app.get('/api/projects/:id', (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  const project = projects.find(p => p.projectId === id);
+
+  if (project) {
+    res.status(200).json(project);
+  } else {
+    res.status(404).json({ message: 'Not Found' });
+  }
+});
+
+app.post('/api/projects', (req, res) => {
+  const project = req.body;
+  const nextid = len(projects) + 1;
+
+  project.projectid = nextid;
+
+  res.status(201).json(project);
+});
+
+app.put('/api/projects/:id', (req, res) => {
+  const project = req.body;
+
+  res.status(200).json(project);
 });
 
 app.listen(port, () => {

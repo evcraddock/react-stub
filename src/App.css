@@ -26,7 +26,6 @@ header {
     justify-content: flex-end;
     align-items: center;
     padding: 20px 50px;
-    box-shadow: 0 1px 8px #ddd;
 }
 
 #nav-title {

@@ -32,11 +32,13 @@ export const projectsAPI = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getProjects: builder.query<Project[], void>({
       query: () => 'projects',
+      providesTags: ['Project'],
       transformResponse: (res: ProjectResponse[]) =>
         res.map((p: ProjectResponse) => transformProjectResponse(p)),
     }),
     getProject: builder.query<Project, { id: number }>({
       query: ({ id }) => `/projects/${id}`,
+      providesTags: ['Project'],
       transformResponse: (res: ProjectResponse) =>
         transformProjectResponse(res),
     }),
@@ -48,6 +50,7 @@ export const projectsAPI = baseApi.injectEndpoints({
           body: projectInput,
         };
       },
+      invalidatesTags: ['Project'],
     }),
     updateProject: builder.mutation<
       Project,
@@ -60,6 +63,7 @@ export const projectsAPI = baseApi.injectEndpoints({
           body: projectInput,
         };
       },
+      invalidatesTags: ['Project'],
     }),
   }),
 });

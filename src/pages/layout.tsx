@@ -2,6 +2,7 @@ import { Outlet, Link } from 'react-router-dom';
 
 import { selectTitle } from '../lib/store/layoutSlice';
 import { useAppSelector } from '../lib/store/hooks';
+import SearchAppBar from './header.tsx';
 
 const Layout = () => {
   const title = useAppSelector(selectTitle);

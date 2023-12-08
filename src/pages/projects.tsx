@@ -14,7 +14,7 @@ const Projects = () => {
         {isSuccess &&
           projects.map((p: Project) => (
             <li key={p.id}>
-              {p.name} - {p.description}
+              PROJECT: {p.name} - {p.description}
             </li>
           ))}
       </ul>

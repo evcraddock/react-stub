@@ -23,7 +23,7 @@ app.get('/api/health', (_, res) => {
 });
 
 const projects = [
-  { projectId: 1, projectName: 'Project 1', description: 'Description for Project 1' },
+  { projectId: 1, projectName: 'Project 1', description: 'Dang old project man' },
   { projectId: 2, projectName: 'Project 2', description: 'Description for Project 2' },
   { projectId: 3, projectName: 'Project 3', description: 'Description for Project 3' },
 ];
